@@ -4,11 +4,12 @@ import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, Vi
 const LoginScreen = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
     return (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
             <View style={styles.inputContainer}>
-                <TextInput placeholder="Email" /*value={ } onChangeText={text => }*/ style={styles.input} />
-                <TextInput placeholder="Password" /*value={ } onChangeText={text => }*/ style={styles.input} secureTextEntry/>
+                <TextInput placeholder="Email" value={email} onChangeText={text => setEmail(text)} style={styles.input} />
+                <TextInput placeholder="Password" value={password} onChangeText={text => setPassword(text)} style={styles.input} secureTextEntry/>
                 
             </View>
             <View style={styles.buttonContainer}>
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     },
     button: {
         width: "100%",
-        backgroundColor: "#0782f9",
+        backgroundColor: "#133B60",
         padding: 15,
         borderRadius: 15,
         alignItems: "center"
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
     buttonOutline: {
         backgroundColor: "white",
         marginTop: 10,
-        borderColor: "#0782f9",
+        borderColor: "#133B60",
         borderWidth: 2
     },
     buttonText: {
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
         fontSize: 16
     },
     buttonOutlineText: {
-        color: "#0782f9",
+        color: "#133B60",
         fontWeight: "700",
         fontSize: 16
     }
