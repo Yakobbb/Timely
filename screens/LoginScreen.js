@@ -1,9 +1,38 @@
+import { useNavigation } from "@react-navigation/native";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 const LoginScreen = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const navigation = useNavigation()
+
+    const handleEmailRegister = () => {
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            navigation.navigate("Home")
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+        });
+    }
+
+    const handleEmailLogin = () => {
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          navigation.navigate("Home")
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+        });
+    }
 
     return (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -14,11 +43,11 @@ const LoginScreen = () => {
             </View>
             <View style={styles.buttonContainer}>
 
-                <TouchableOpacity style={[styles.button]}>
+                <TouchableOpacity style={[styles.button]} onPress={handleEmailLogin}>
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={[styles.button, styles.buttonOutline]}>
+                <TouchableOpacity style={[styles.button, styles.buttonOutline]} onPress={handleEmailRegister}>
                     <Text style={styles.buttonOutlineText}>Register</Text>
                 </TouchableOpacity>
 
@@ -29,6 +58,7 @@ const LoginScreen = () => {
 
 export default LoginScreen
 
+// Styling below; eventually will be moved to separate file
 const styles = StyleSheet.create({
     container: {
         flex: 1,
