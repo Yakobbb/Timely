@@ -60,7 +60,7 @@ const LoginScreen = () => {
 
 export default LoginScreen
 
-// Styling below; eventually will be moved to separate file
+// Basic styling below; eventually will be moved to separate file.. or removed based on Tailwind implementation
 const styles = StyleSheet.create({
     container: {
         flex: 1,
