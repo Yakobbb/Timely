@@ -15,7 +15,7 @@ const LoginScreen = () => {
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            navigation.navigate("Home")
+            navigation.navigate('HomeNavBar', { screen: 'Home' });
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -28,7 +28,7 @@ const LoginScreen = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          navigation.navigate("Home")
+          navigation.navigate('HomeNavBar', { screen: 'Home' });
         })
         .catch((error) => {
           const errorCode = error.code;
