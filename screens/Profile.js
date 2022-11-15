@@ -1,14 +1,26 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const ProfileScreen = () => {
     return (
-        <View>
-            <Text>Profile screen</Text>
-        </View>
+        <SafeAreaView style={{flex: 1, backgroundColor:'white'}}>
+            <ScrollView style={styles.container}
+            contentContainerStyle={{justifyContent: 'center', alignItems: 'center'}}
+            showsVerticalScrollIndicator={false}>
+                <Image />
+
+            </ScrollView>
+        </SafeAreaView>
     )
 }
 
 export default ProfileScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: 'white',
+        padding: 20
+    }
+})
