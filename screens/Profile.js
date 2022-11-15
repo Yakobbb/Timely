@@ -8,6 +8,7 @@ const ProfileScreen = () => {
             <ScrollView style={styles.container}
             contentContainerStyle={{justifyContent: 'center', alignItems: 'center'}}
             showsVerticalScrollIndicator={false}>
+                <Image />
 
             </ScrollView>
         </SafeAreaView>
