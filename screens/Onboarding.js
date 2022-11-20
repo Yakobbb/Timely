@@ -24,6 +24,14 @@ const OnboardingScreen = () => {
             <View style={styles.image}>
                 <FirstSlide />
             </View>
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity style={[styles.emptyButton]}>
+                    <Text style={styles.buttonOutlineText}>Skip</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.button]} >
+                    <Text style={styles.buttonText}>Register</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }
@@ -42,12 +50,11 @@ const styles = StyleSheet.create({
     },
     image: {
         paddingTop: '15%',
-        alignItems: 'center'
+        alignItems: 'center',
     }, 
     subHeader: {
         fontFamily: 'SF-Pro-Display-Regular',
         paddingTop: '10%',
-
         textAlign: 'center',
         fontSize: '28px'
     },
@@ -60,17 +67,26 @@ const styles = StyleSheet.create({
         fontSize: '20px'
     },
     buttonContainer: {
-        width: "60%",
-        justifyContent: "center",
+        flexDirection: "row",
+        width: "100%",
+        justifyContent: "space-evenly",
         alignItems: "center",
-        marginTop: 40
+        marginTop: '10%'
+    },
+    emptyButton: {
+        flex: 1,
+        maxWidth: '25%',
+        padding: 15,
+        borderRadius: 15,
+        alignItems: "center",
     },
     button: {
-        width: "100%",
+        flex: 1,
+        maxWidth: '25%',
         backgroundColor: "#133B60",
         padding: 15,
         borderRadius: 15,
-        alignItems: "center"
+        alignItems: "center",
     },
     buttonOutline: {
         backgroundColor: "white",
