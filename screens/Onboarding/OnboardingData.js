@@ -2,9 +2,9 @@ import {
   FirstTutorial,
   SecondTutorial,
   ThirdTutorial,
-} from "../assets/svg/tutorial";
+} from "../../assets/svg/tutorial";
 
-const data = [
+const OnboardingData = [
   {
     subHeader: "Browse the Feed",
     body: "Swipe through the feed to see what activities other students want to do. You can on click that post to see more info and view their profile.",
@@ -22,4 +22,4 @@ const data = [
   },
 ];
 
-export default data;
+export default OnboardingData;

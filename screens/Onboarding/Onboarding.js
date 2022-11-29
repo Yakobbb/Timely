@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import Carousel, { Pagination } from "react-native-snap-carousel";
 import CarouselCardItem from "./CarouselCardItem";
-import data from "./data";
+import OnboardingData from "./OnboardingData";
 import { useFonts } from "expo-font";
 
 const OnboardingScreen = () => {
@@ -16,7 +16,7 @@ const OnboardingScreen = () => {
   const [index, setIndex] = React.useState(0);
 
   const [fontsLoaded] = useFonts({
-    "SF-Pro-Display-Regular": require("../assets/fonts/SF-Pro-Display-Regular.otf"),
+    "SF-Pro-Display-Regular": require("../../assets/fonts/SF-Pro-Display-Regular.otf"),
   });
 
   if (!fontsLoaded) {
@@ -29,7 +29,7 @@ const OnboardingScreen = () => {
       <View style={styles.carouselContainer}>
         <Carousel
           ref={isCarousel}
-          data={data}
+          data={OnboardingData}
           renderItem={CarouselCardItem}
           sliderWidth={Dimensions.get("window").width}
           itemWidth={Dimensions.get("window").width}
@@ -38,7 +38,7 @@ const OnboardingScreen = () => {
         />
         <Pagination
           style={styles.spacing}
-          dotsLength={data.length}
+          dotsLength={OnboardingData.length}
           activeDotIndex={index}
           carouselRef={isCarousel}
           dotStyle={{
