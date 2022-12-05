@@ -10,11 +10,13 @@ import Carousel, { Pagination } from "react-native-snap-carousel";
 import CarouselCardItem from "./CarouselCardItem";
 import OnboardingData from "./OnboardingData";
 import { useFonts } from "expo-font";
+import { useNavigation } from "@react-navigation/native";
 
 const OnboardingScreen = () => {
-  const isCarousel = React.useRef(null);
+  const ref = React.useRef(null);
   const [index, setIndex] = React.useState(0);
-
+  const handleNext = () => ref.current?.snapToNext?.();
+  const navigation = useNavigation();
   const [fontsLoaded] = useFonts({
     "SF-Pro-Display-Regular": require("../../assets/fonts/SF-Pro-Display-Regular.otf"),
   });
@@ -23,12 +25,16 @@ const OnboardingScreen = () => {
     return null;
   }
 
+  const handleSkip = () => {
+    navigation.navigate("HomeNavBar", { screen: "Home" });
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>How it works</Text>
       <View style={styles.carouselContainer}>
         <Carousel
-          ref={isCarousel}
+          ref={ref}
           data={OnboardingData}
           renderItem={CarouselCardItem}
           sliderWidth={Dimensions.get("window").width}
@@ -40,7 +46,7 @@ const OnboardingScreen = () => {
           style={styles.spacing}
           dotsLength={OnboardingData.length}
           activeDotIndex={index}
-          carouselRef={isCarousel}
+          carouselRef={ref}
           dotStyle={{
             width: 10,
             height: 10,
@@ -55,12 +61,20 @@ const OnboardingScreen = () => {
         />
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={[styles.emptyButton]}>
-          <Text style={styles.buttonOutlineText}>Skip</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.button]}>
-          <Text style={styles.buttonText}>Next</Text>
-        </TouchableOpacity>
+        {index == OnboardingData.length - 1 ? (
+          <TouchableOpacity style={[styles.button]} onPress={handleSkip}>
+            <Text style={styles.buttonText}>Next</Text>
+          </TouchableOpacity>
+        ) : (
+          <>
+            <TouchableOpacity style={[styles.emptyButton]} onPress={handleSkip}>
+              <Text style={styles.buttonOutlineText}>Skip</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.button]} onPress={handleNext}>
+              <Text style={styles.buttonText}>Next</Text>
+            </TouchableOpacity>
+          </>
+        )}
       </View>
     </View>
   );
