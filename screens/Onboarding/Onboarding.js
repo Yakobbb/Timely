@@ -25,6 +25,7 @@ const OnboardingScreen = () => {
     return null;
   }
 
+  // TODO: Reroute to correct page, Home is just a placeholder for now
   const handleSkip = () => {
     navigation.navigate("HomeNavBar", { screen: "Home" });
   };
@@ -63,7 +64,7 @@ const OnboardingScreen = () => {
       <View style={styles.buttonContainer}>
         {index == OnboardingData.length - 1 ? (
           <TouchableOpacity style={[styles.button]} onPress={handleSkip}>
-            <Text style={styles.buttonText}>Next</Text>
+            <Text style={styles.buttonText}>Finish</Text>
           </TouchableOpacity>
         ) : (
           <>
@@ -96,6 +97,7 @@ const styles = StyleSheet.create({
     paddingLeft: "10%",
     fontWeight: "bold",
     fontSize: "32px",
+    color: "#133B60",
   },
   buttonContainer: {
     flexDirection: "row",
