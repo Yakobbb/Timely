@@ -1,6 +1,10 @@
+import { getAuth } from "firebase/auth";
 import React from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Image, Button, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+const auth = getAuth();
+const user = auth.currentUser;
 
 const ProfileScreen = () => {
     return (
@@ -8,8 +12,11 @@ const ProfileScreen = () => {
             <ScrollView style={styles.container}
             contentContainerStyle={{justifyContent: 'center', alignItems: 'center'}}
             showsVerticalScrollIndicator={false}>
-                <Image />
-
+                <TouchableOpacity style={{width: 40, height: 40}}>
+                    
+                </TouchableOpacity>
+                <Image style={{width: 200, height: 200, borderRadius: 100}}
+                source={require('../assets/testuser/profilePic.jpg')}/>
             </ScrollView>
         </SafeAreaView>
     )
