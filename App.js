@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "./screens/Login";
 import OnboardingScreen from "./screens/Onboarding/Onboarding";
 import NavBarTabs from "./screens/NavBar";
+import ProfileSetupScreen from "./screens/ProfileSetup";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,11 @@ export default function App() {
           options={{ headerShown: false }}
           name="HomeNavBar"
           component={NavBarTabs}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="ProfileSetup"
+          component={ProfileSetupScreen}
         />
         <Stack.Screen
           options={{ headerShown: false }}

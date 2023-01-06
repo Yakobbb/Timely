@@ -27,7 +27,7 @@ const OnboardingScreen = () => {
 
   // TODO: Reroute to correct page, Home is just a placeholder for now
   const handleSkip = () => {
-    navigation.navigate("HomeNavBar", { screen: "Home" });
+    navigation.navigate("ProfileSetup", { screen: "ProfileSetup" });
   };
 
   return (
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     maxWidth: "25%",
-    backgroundColor: "#133B60",
+    backgroundColor: "#3B99D8",
     padding: 15,
     borderRadius: 15,
     alignItems: "center",
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   buttonOutline: {
     backgroundColor: "white",
     marginTop: 10,
-    borderColor: "#133B60",
+    borderColor: "#3B99D8",
     borderWidth: 2,
   },
   buttonText: {
