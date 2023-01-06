@@ -13,10 +13,6 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen options={{headerShown: false}} name = "Onboarding" component={OnboardingScreen} />
-        <Stack.Screen options={{headerShown: false}} name = "HomeNavBar" component={NavBarTabs} />
-        <Stack.Screen options={{headerShown: false}} name = "Login" component={LoginScreen} />
-=======
         <Stack.Screen
           options={{ headerShown: false }}
           name="Onboarding"
@@ -37,7 +33,6 @@ export default function App() {
           name="Login"
           component={LoginScreen}
         />
->>>>>>> aef847cc08e8aec62dfeaa570aa3691960ddbf15
       </Stack.Navigator>
     </NavigationContainer>
   );
