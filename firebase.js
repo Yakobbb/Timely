@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
-// Your web app's Firebase configuration
+// Timely's specific Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCb25N0NLybIs741BaFmwP_SGFi-qZUriU",
   authDomain: "timely-backend-abbbb.firebaseapp.com",
