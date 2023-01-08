@@ -3,6 +3,8 @@ import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } f
 import React, { useState } from "react";
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { app } from "../firebase";
+import OnboardingScreen from "./Onboarding/Onboarding";
+
 
 const LoginScreen = () => {
     const [email, setEmail] = useState("")
@@ -14,8 +16,8 @@ const LoginScreen = () => {
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in 
-            const user = userCredential.user;
-            navigation.navigate('HomeNavBar', { screen: 'Home' });
+            const user = userCredential.user
+            navigation.navigate('Onboarding', { screen: 'OnboardingScreen' });
         })
         .catch((error) => {
             const errorCode = error.code;

@@ -1,5 +1,6 @@
+import { getAuth } from "firebase/auth";
 import React from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Image, Button, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ProfileImage } from "../assets/svg/profile";
 import {
@@ -7,6 +8,9 @@ import {
   LocationIcon,
   EducationIcon,
 } from "../assets/svg/profileicons";
+
+const auth = getAuth();
+const user = auth.currentUser;
 
 const ProfileScreen = () => {
   return (

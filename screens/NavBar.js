@@ -1,10 +1,10 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import ProfileScreen from "./Profile";
-import HomeScreen from "./Home";
-import ActivityScreen from "./Activity";
+import FeedScreen from "./Feed";
 import MessagesScreen from "./Messages";
+import { View, Text, Button, Image, TouchableOpacity } from 'react-native';
+import { ProfileIcon } from "../assets/svg/profilesetup";
 
 // Screen that will introduce the menu bar
 const Tab = createBottomTabNavigator();
@@ -12,10 +12,28 @@ const Tab = createBottomTabNavigator();
 const NavBarTabs = () => {
   return (
     <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} options={headerStyle}/>
-        <Tab.Screen name="Activity" component={ActivityScreen} options={headerStyle}/>
+        <Tab.Screen
+        name="Feed"
+        component={FeedScreen}
+        options={{
+          // Quick fix for styling... eventually should be using the headerStyle variable
+          headerTitleAlign: 'left',
+          headerStyle: {
+            borderBottomWidth: 2,
+            borderBottomColor: 'lightgrey'
+          },
+          headerTitleStyle: {
+            color: '#133B60',
+            fontSize: 30,
+          },
+          headerRight: () => (
+            <TouchableOpacity>
+              <ProfileIcon />
+            </TouchableOpacity>
+          ),
+        }}
+      />
         <Tab.Screen name="Messages" component={MessagesScreen} options={headerStyle}/>
-        <Tab.Screen name="Profile" component={ProfileScreen} options={headerStyle}/>
     </Tab.Navigator>
   );
 }
