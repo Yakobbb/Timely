@@ -1,10 +1,13 @@
 import { useNavigation } from "@react-navigation/native";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from "react-native";
 import { app } from "../firebase";
 import OnboardingScreen from "./Onboarding/Onboarding";
+import * as Google from 'expo-auth-session/providers/google';
+import * as WebBrowser from 'expo-web-browser';
 
+WebBrowser.maybeCompleteAuthSession();
 
 const LoginScreen = () => {
     const [email, setEmail] = useState("")
@@ -38,6 +41,16 @@ const LoginScreen = () => {
         });
     }
 
+    // Google Cloud & API services currently just have the Expo Go Proxy client ID
+    const handleGoogleSignIn = () => {
+        const [accessToken, setAccessToken] = React.useState()
+        const [userInfo, setUserInfo] = React.useState();
+
+        const [request, response, promptAsync] = Google.useAuthRequest({
+
+        });
+    }
+
     return (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
             <View style={styles.inputContainer}>
@@ -55,6 +68,9 @@ const LoginScreen = () => {
                     <Text style={styles.buttonOutlineText}>Register</Text>
                 </TouchableOpacity>
 
+                <TouchableOpacity style={[styles.button]} onPress={handleGoogleSignIn}>
+                    <Image style={{width: 30, height: 30}} source={require('../assets/google_icon.png')}/>
+                </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>
     )
@@ -89,6 +105,7 @@ const styles = StyleSheet.create({
         width: "100%",
         backgroundColor: "#133B60",
         padding: 15,
+        marginTop: 10,
         borderRadius: 15,
         alignItems: "center"
     },
@@ -107,5 +124,5 @@ const styles = StyleSheet.create({
         color: "#133B60",
         fontWeight: "700",
         fontSize: 16
-    }
+    },
 })
