@@ -85,6 +85,7 @@ export default OnboardingScreen;
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "white",
     flex: 1,
     paddingTop: "20%",
     fontFamily: "SF-Pro-Display-Regular",
