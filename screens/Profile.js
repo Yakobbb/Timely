@@ -1,20 +1,56 @@
 import { getAuth } from "firebase/auth";
-import React from "react";
-import { ScrollView, StyleSheet, Image, Button, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import {
+  Text,
+  View,
+  ScrollView,
+  StyleSheet,
+  Image,
+  Button,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ProfileImage } from "../assets/svg/profile";
 import {
   SexIcon,
   LocationIcon,
   EducationIcon,
+  EditIcon,
 } from "../assets/svg/profileicons";
 
 const auth = getAuth();
 const user = auth.currentUser;
 
 const ProfileScreen = () => {
+  const [isEditing, setIsEditing] = useState(false);
+
+  var currentName = "James Kupir";
+
+  const updateText = ({ value }) => {
+    currentName = value;
+  };
+
+  const onEditClick = () => {
+    setIsEditing(true);
+  };
+
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: "white", paddingVertical: 40 }}
+    >
+      <TouchableOpacity
+        style={{
+          flexDirection: "row",
+          alignSelf: "flex-end",
+          marginRight: 10,
+          alignItems: "center",
+        }}
+        onPress={onEditClick}
+      >
+        <Text style={styles.editConfirmText}>Edit</Text>
+        <EditIcon />
+      </TouchableOpacity>
       <ScrollView
         style={styles.container}
         contentContainerStyle={{
@@ -24,7 +60,17 @@ const ProfileScreen = () => {
         showsVerticalScrollIndicator={false}
       >
         <ProfileImage />
-        <Text style={styles.name}>James Kupir</Text>
+        {isEditing ? (
+          <TextInput
+            // clearButtonMode="while-editing"
+            style={styles.name}
+            defaultValue={currentName}
+            onChange={updateText}
+          ></TextInput>
+        ) : (
+          <Text style={styles.name}>{currentName}</Text>
+        )}
+
         <Text style={styles.subheader}>Overview</Text>
         <View style={styles.info}>
           <SexIcon style={{ flex: 1 }} />
@@ -89,5 +135,11 @@ const styles = StyleSheet.create({
     flex: 15,
     fontSize: "16px",
     color: "#3D3F4C",
+  },
+  editConfirmText: {
+    marginRight: 5,
+    fontSize: "16px",
+    fontWeight: "bold",
+    color: "#3B99D8",
   },
 });

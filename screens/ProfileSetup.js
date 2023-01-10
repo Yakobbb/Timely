@@ -14,7 +14,7 @@ const ProfileSetupScreen = () => {
   const navigation = useNavigation();
 
   const handleComplete = () => {
-    navigation.navigate("HomeNavBar", { screen: "ProfileSetup" });
+    navigation.navigate("Profile", { screen: "ProfileScreen" });
   };
 
   return (
